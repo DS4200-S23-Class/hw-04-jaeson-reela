@@ -1,0 +1,32 @@
+/* Styling for HW-03 Goes in this File */
+/* 60/40 colummn link: https://codepen.io/catheraaine/pen/QNgoEX */
+
+body {
+	font-family: Arial;
+	text-align: center;
+}
+
+.container {
+  margin: 1em;
+}
+
+.left,
+.right {
+/*background-color: #66d9ff;*/
+  border: 3px solid #888888;
+  overflow: hidden;
+}
+
+.left {
+  width: calc(60% - (.5em + 6px));
+  float: left;
+  min-height: 400px;
+  margin-top: 1em;
+}
+
+.right {
+  width: calc(40% - (.5em + 6px));
+  float: right;
+  min-height: 400px;
+  margin-top: 1em;
+}
