@@ -7,26 +7,32 @@ body {
 }
 
 .container {
-  margin: 1em;
+	display: flex;
+	flex-direction: row;
 }
-
-.left,
-.right {
-/*background-color: #66d9ff;*/
-  border: 3px solid #888888;
-  overflow: hidden;
-}
-
 .left {
-  width: calc(60% - (.5em + 6px));
-  float: left;
-  min-height: 400px;
-  margin-top: 1em;
+	width: 60%;
+	padding: 20px;
+}
+.right {
+	width: 40%;
+	padding: 20px;
+}
+svg {
+	stroke: black;
+	height: 2000px;
+	width: 2000px;
 }
 
-.right {
-  width: calc(40% - (.5em + 6px));
-  float: right;
-  min-height: 400px;
-  margin-top: 1em;
+svg line {
+	stroke-width:4px;
+}
+
+.highlight {
+	fill: red;
+	r: 6;
+}
+.selected {
+	stroke: black;
+	stroke-width: 2;
 }

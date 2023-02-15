@@ -13,22 +13,40 @@
 </head>
 
 
-
 <body>
 <!-- Heading of Webpage-->
     <h1>hw-04: Event Handling</h1>
 
     <div class="container">
+        <!-- Left column-->
         <div class="left">
-            <h2> 60% </h2>
+            <svg id="plot">
+                <!-- Define the x axis -->
+                <line x1="10" y1="400" x2="400" y2="400"/>
+                <!-- Define the x axis -->
+                <line x1="10" y1="10" x2="10" y2="400" />
+                <!-- Add the scatter plot points -->
+                <circle cx="40" cy="320" r="6" class="point"/>
+                <circle cx="80" cy="240" r="6" class="point"/>
+                <circle cx="240" cy="320" r="6" class="point"/>
+                <circle cx="360" cy="40" r="6" class="point"/>
+            </svg>
         </div>
-
+        <!-- Right column-->
         <div class="right">
-            <h2> 40% </h2>
+            <p id="last-click"> Last Point Clicked:</p>
+            <!--<button type="button" id="subButton" onClick="addPoint()">Add Point</button>-->
         </div>
     </div>
 
-
 </body>
+
+<script src="external.js"></script>
+
+<h3>Acknowledgements</h3>
+<ul>
+<li><a href="https://www.w3schools.com/graphics/svg_line.asp">https://www.w3schools.com/graphics/svg_line.asp</a></li>
+<li><a href="https://www.w3docs.com/learn-html/svg-line.html">https://www.w3docs.com/learn-html/svg-line.html</a></li>
+</ul>
 
 </html>
