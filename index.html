@@ -1,52 +1,56 @@
 <!DOCTYPE html>
 <html> 
 
-<!-- Meta Data / Set Up -->
 <head>
 
-  <link rel="stylesheet" href="style.css">
-  <script src = 'external.js'></script>   
+    <!-- Meta Data / Set Up-->
+    <meta charset=utf-8/>
 
-<!-- Title of Webpage-->
-  <title>hw-04</title>
-    
+    <!-- Title of Webpage-->
+    <title>hw-04</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
-<!-- Heading of Webpage-->
+    <!-- Heading of Webpage-->
     <h1>hw-04: Event Handling</h1>
-
+    <!-- Create Two Columns on Webpage-->
     <div class="container">
-        <!-- Left column-->
+        <!-- Left Column-->
         <div class="left">
-            <svg id="plot">
-                <!-- Define the x axis -->
-                <line x1="10" y1="400" x2="400" y2="400"/>
-                <!-- Define the x axis -->
-                <line x1="10" y1="10" x2="10" y2="400" />
-                <!-- Add the scatter plot points -->
-                <circle cx="40" cy="320" r="6" class="point"/>
-                <circle cx="80" cy="240" r="6" class="point"/>
-                <circle cx="240" cy="320" r="6" class="point"/>
-                <circle cx="360" cy="40" r="6" class="point"/>
+            <svg id="svg" class="scatterplot" width="500" height="500">
             </svg>
         </div>
-        <!-- Right column-->
+        <!-- Right Column-->
         <div class="right">
-            <p id="last-click"> Last Point Clicked:</p>
-            <!--<button type="button" id="subButton" onClick="addPoint()">Add Point</button>-->
+            <input type="number" placeholder="Input X-Coordinate" name="X" id="X">
+            <input type="number" placeholder="Input Y-Coordinate" name="Y" id="Y">
+            <br>
+            <br>
+            <!-- Initiates Onclick Event When User Clicks on HTML Element-->
+            <button onclick="buttonClick()">Add Point</button>
+            <br>
+            <br>
+            <!-- ID Used to Add Event Listeners to Onclick Event-->
+            <div id="last-click">Last Point Clicked: </div>
         </div>
     </div>
 
+   <!--  Resources Used to Complete This Assignment-->
+   <h3>Acknowledgements</h3>
+    <ul>
+    <li><a href=" https://css-tricks.com/snippets/css/a-guide-to-flexbox/"> https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS">https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS</a></li>
+    <li><a href="https://www.w3schools.com/html/html_form_input_types.asp">https://www.w3schools.com/html/html_form_input_types.asp</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseover_event">https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseover_event</a></li>
+    <li><a href="https://codepen.io/catheraaine/pen/QNgoEX">https://codepen.io/catheraaine/pen/QNgoEX</a></li>
+    <li><a href="https://api.jquery.com/mouseleave/">https://api.jquery.com/mouseleave/</a></li>
+    <li><a href="  https://endubueze00.medium.com/javascript-basics-string-concatenation-with-variables-and-interpolation-deba239debbe">  https://endubueze00.medium.com/javascript-basics-string-concatenation-with-variables-and-interpolation-deba239debbe</a></li>
+    <li><a href="https://www.w3schools.com/jsref/prop_html_innerhtml.asp">  
+    https://www.w3schools.com/jsref/prop_html_innerhtml.asp</a></li>
+    </ul>
+
+    <script src="external.js"></script>
+
 </body>
-
-<script src="external.js"></script>
-
-<h3>Acknowledgements</h3>
-<ul>
-<li><a href="https://www.w3schools.com/graphics/svg_line.asp">https://www.w3schools.com/graphics/svg_line.asp</a></li>
-<li><a href="https://www.w3docs.com/learn-html/svg-line.html">https://www.w3docs.com/learn-html/svg-line.html</a></li>
-</ul>
-
 </html>
