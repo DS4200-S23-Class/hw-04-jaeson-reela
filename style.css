@@ -25,10 +25,10 @@ h3 {
 
 /* Create Scatterplot*/
 .scatterplot {
-  width: 500px;
-  height: 500px;
   border-left: 5px solid  #000;
   border-bottom: 5px solid  #000;
+  width: 500px;
+  height: 500px;
 }
 
 /* Styles Left Column of Webpage*/
@@ -42,4 +42,22 @@ h3 {
   width: 40%;
   padding: 20px;
 }
+
+/* Styles Effects of Events in Javascript Effects*/
+circle {
+  fill: black;
+  stroke: none;
+  r: 7px;
+}
+
+.highlighted {
+  fill: pink;
+}
+
+.clicked {
+  stroke: purple;
+  stroke-width: 5;
+}
+
+
 

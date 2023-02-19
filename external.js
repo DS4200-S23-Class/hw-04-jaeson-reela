@@ -1,60 +1,98 @@
-// External Javascript File HW-04
-
-// Sets Parameters of the Sector Where Points are Placed
-const height = 500;
+// Define the Size of the SVG Container
 const width = 500;
+const height = 500;
 
-// Declares Variables of Given Initial Points
-let initialPoints = [[1, 2], [2, 4], [6, 2], [9, 9]];
-let initialSVG = document.getElementById("svg");
+// Setting Given Points as Fixed Points on Plot
+const data = [{x: 1, y: 2},  {x: 2, y: 4},  {x: 6, y: 2}, {x: 9, y: 9}];
 
-// Creates a New Circle Element in the SVG, Assigns to Circle Constant Variable
-function addPoint(x, y) {
-  const circle = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "circle"
-  );
+// Create the SVG Container
+const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+svg.setAttribute("width", width);
+svg.setAttribute("height", height);
 
-  // Styles the Circle Constant Variable for Initial and Added Points
-  circle.setAttribute("r", 6);
-  circle.setAttribute("fill", "black");
-  circle.setAttribute("class", "circle");
-  circle.setAttribute("cx", x * 50);
-  circle.setAttribute("cy", height - (y * 50));
+// Define Function to Update Last Clicked Point
+function updateLastClickedText(x, y) {
+  const lastClicked = document.getElementById("last-click");
+  lastClicked.textContent = "Last Point Clicked: (" + x + ", " + y + ")";
+}
 
- // When Mouse Hovers Over Circle, Circle Highlights
+// Add Points to SVG Container
+for (let i = 0; i < data.length; i++) {
+  const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  circle.setAttribute("cx", (data[i].x / 10) * width);
+  circle.setAttribute("cy", height - (data[i].y / 10) * height);
+  
+  // Add Click Event Listener to Each Original Point
+  circle.addEventListener("click", function() {
+    updateLastClickedText(data[i].x, data[i].y);
+  });
+
+  // Add Mouse Enter Event Listener to Add Highlighted Class to Circle
   circle.addEventListener("mouseenter", () => {
-    circle.setAttribute("fill", "pink");
+  circle.classList.add("highlighted");
+});
+
+  // Add Mouse Enter Event Listener to Remove Highlighted Class to Circle
+  circle.addEventListener("mouseleave", () => {
+  circle.classList.remove("highlighted");
+});
+
+  // Add Click Event Listener to Each Point
+circle.addEventListener("click", function() {
+  updateLastClickedText(data[i].x, data[i].y);
+  if (circle.classList.contains("clicked")) {
+    circle.classList.remove("clicked");
+  } else {
+    circle.classList.add("clicked");
+  }
+  });
+
+  svg.appendChild(circle);
+}
+
+// Append the SVG Element to the Container Element
+const container = document.getElementById("svg");
+container.appendChild(svg);
+
+// Add Function to Handle Events when Button Clicked
+function buttonClick() {
+  const xInput = document.getElementById("X");
+  const yInput = document.getElementById("Y");
+  
+  // Get X and Y Values from Input Fields
+  const x = xInput.value;
+  const y = yInput.value;
+
+  // Confirm that Only Coordinates 0-9 are Inputted
+  if (x < 0 || x > 9 || y < 0 || y > 9) {
+    return;
+  }
+
+  // Create New Circle Element for the Coordinates Inputted
+  const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  circle.setAttribute("cx", (x / 10) * width);
+  circle.setAttribute("cy", height - (y / 10) * height);
+  
+ // Add Mouse Enter Event Listener to Add Highlighted Class to Circle
+  circle.addEventListener("mouseenter", () => {
+  circle.classList.add("highlighted");
+});
+
+  // Add Mouse Enter Event Listener to Remove Highlighted Class to Circle
+  circle.addEventListener("mouseleave", () => {
+  circle.classList.remove("highlighted");
+});
+
+  // Add Click Event Listener to the New Point
+  circle.addEventListener("click", function() {
+    updateLastClickedText(x, y);
+    if (circle.classList.contains("clicked")) {
+      circle.classList.remove("clicked");
+    } else {
+      circle.classList.add("clicked");
+    }
   });
   
- // When Mouse Leaves Circle, Circle Removes Highlight
-  circle.addEventListener("mouseleave", () => {
-    circle.setAttribute("fill", "black");
-  });
-
-// Adds Events to Circle When Clicked on Circle Variable
- circle.addEventListener("click", () => {
-   // Last Point Clicked Updates
-   document.getElementById("last-click").innerHTML = "Last Point Clicked: (" + x + " , " + y + ")";
-   
-   // Adds Border to Circle When Clicked
-   if (circle.getAttribute("stroke")) {
-   	   circle.removeAttribute("stroke");
-   } else {
-   	   circle.setAttribute("stroke", "limegreen");
-   	   circle.setAttribute("stroke-width", 4);
-   }
-  });
- return circle;
- }
-
-
-initialPoints.forEach(allPoints => {
-  initialSVG.appendChild(addPoint(allPoints[0], allPoints[1]));
-})
-
-function buttonClick() {
-  let x = document.getElementById("X").value;
-  let y = document.getElementById("Y").value;
-  initialSVG.appendChild(addPoint(x, y));
+  // Add the New Point to the SVG Container
+  svg.appendChild(circle);
 }
